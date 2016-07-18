@@ -28,6 +28,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#if defined(__QNXNTO__)
+#include <sys/time.h>
+#endif
+
 #define TEST_WIDTH  1920
 #define TEST_HEIGHT 1080
 #define TEST_BPP    32
@@ -211,7 +215,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cs,As,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -255,7 +259,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -300,7 +304,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -356,7 +360,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -509,7 +513,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cs,As,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -558,7 +562,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -608,7 +612,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -664,7 +668,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -720,7 +724,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -782,7 +786,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cs,As,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -832,7 +836,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -926,7 +930,7 @@ int main(int argc, char*argv[])
              unsigned int k, iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
 
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              As = (src.clrcolor >> 24) & 0xff;
              Cd = Ad = ((i*test_width+j + 128) % 255);
@@ -1583,7 +1587,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cs,As,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -1628,7 +1632,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -1684,7 +1688,7 @@ int main(int argc, char*argv[])
          {
              unsigned int  iCo, iAo;
              unsigned char Cs,As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -1739,7 +1743,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char Cs,As,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
@@ -1788,7 +1792,7 @@ int main(int argc, char*argv[])
          for(j=0; j<test_width; j++)
          {
              unsigned char As,Cd,Ad,Co,Ao;
-             char* p = (char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
+             unsigned char* p = (unsigned char *)(((int)d_buf->buf_vaddr) + (i*test_width+j)*4);
 
              if(p[0] != p[1] || p[0] != p[2])
              {
