@@ -49,11 +49,7 @@ include $(BUILD_PREBUILT)
 
 #for media codec performance setting
 include $(CLEAR_VARS)
-ifeq ($(BOARD_HAVE_VPU), true)
 LOCAL_SRC_FILES := media_codecs_performance.xml
-else
-LOCAL_SRC_FILES := media_codecs_performance_no_vpu.xml
-endif
 LOCAL_MODULE := media_codecs_performance.xml
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TAGS := eng
